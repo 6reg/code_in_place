@@ -1,14 +1,20 @@
 def main():
     print("Welcome to the CodeInPlace Game Show!")
 
-    door = int(input("Door: "))
+    door = get_door()
 
-    while door < 1 or door > 3 :
-        print("Invalid door #!")
+    prize = compute_prize(door)
+   
 
-        door = int(input("Door: "))
-
+    print("The prize is", prize, "!")
+     
+def compute_prize(door):
+    """
+    Compute prize, calculates how many treats you win.
+    Based off door which was chosen
+    """
     prize = 4 
+
     if door == 1:
         prize = 2 + 9 // 10 * 100
     elif door == 2:
@@ -16,9 +22,23 @@ def main():
         if not locked:
             prize += 6
     elif door == 3:
+        
         for i in range(door):
-            prize += i
+           prize += i
+    return prize
 
-    print("The prize is", prize, "!")
+def get_door():
+    """
+    Get door, asks user to enter door
+    Reprompts the user until they enter 1, 2 or 3
+    Returns valide door choice
+    """
+    door = int(input("Door: "))
+    # while input invalide
+    while door < 1 or door > 3:
+        # tell user invalid
+        print("Invalid door!")
+        # ask for new input
+        door = int(input("Door: "))
 
 main()
