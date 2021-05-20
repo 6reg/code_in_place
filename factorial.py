@@ -6,6 +6,7 @@ def main():
     for i in range(MAX_NUM):
         print(i, factorial(i))
         
+# Hmm
 def factorial(n):
     result = 1
     for i in range(1, n+1):
